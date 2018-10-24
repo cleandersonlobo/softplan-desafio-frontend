@@ -1,8 +1,10 @@
 const styles = theme => ({ 
+  root: {
+    margin: 20,
+  },
   cardItem: { 
     padding: theme.spacing.unit,
     display: 'flex',
-    margin: 40,
   },
   title: {
     ...theme.typography.title,
@@ -36,7 +38,19 @@ const styles = theme => ({
   },
   activeBorder: {
     border: `1px solid ${theme.palette.primary.main}`
-  }
+  },
+  buttonAction: {
+    fontWeight: 'bold', 
+    marginLeft: theme.spacing.unit,
+  }, 
+  btnRemover: {
+    color: theme.palette.secondary.main, 
+    border: `1px solid ${theme.palette.secondary.litgh}`
+  }, 
+  btnEditar: {
+    color: theme.palette.primary.main, 
+    border: `1px solid ${theme.palette.primary.main}`
+  }, 
 });
 
 export default styles;
