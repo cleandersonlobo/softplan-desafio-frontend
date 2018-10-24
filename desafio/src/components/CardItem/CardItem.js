@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, CardContent, Card, CardHeader, IconButton, Typography, Hidden } from '@material-ui/core';
+import { Grid, CardContent, Card, CardActions, Button, CardHeader, IconButton, Typography, Hidden } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import styles from './styles';
 
@@ -9,7 +9,7 @@ class CardItem extends Component {
   render() {
     const { processo, classes, onClose } = this.props;
     return (
-      <Card key={processo.id}>
+      <Card key={processo.id} className={classes.root}>
         <CardHeader
         avatar={
           <Hidden smDown>
@@ -62,6 +62,25 @@ class CardItem extends Component {
             </Typography>  
           </Grid>
         </CardContent>
+        <CardActions>
+          <Grid container alignItems="center" justify="flex-end">
+            <Button 
+              onClick={this.props.onClickRemove(processo)}
+              variant="outlined"
+              size="small" 
+              className={classNames(classes.buttonAction, classes.btnRemover)}
+            >
+              REMOVER
+            </Button>
+            {/* <Button
+              variant="outlined" 
+              size="small" 
+              color="primary" 
+              className={classNames(classes.buttonAction, classes.btnEditar)}>
+              EDITAR
+            </Button> */}
+          </Grid>
+      </CardActions>
       </Card>
     )
   }
