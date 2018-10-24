@@ -14,9 +14,15 @@ class ListaMain extends Component {
     classes: PropTypes.object.isRequired,
     chooseProcesso: PropTypes.func.isRequired,
     unselectProcess: PropTypes.func.isRequired,
+    deletarProcesso: PropTypes.func.isRequired,
   };
 
   handleOnClickClose = () => this.props.unselectProcess();
+
+  handleOnRemoveProcesso = processo => event => {
+    event.preventDefault();
+    this.props.deletarProcesso(processo);
+  }
 
   renderCardItem = (processo) => {
     if (processo) {
@@ -25,6 +31,7 @@ class ListaMain extends Component {
           <CardItem
             processo={processo}
             onClose={this.handleOnClickClose}
+            onClickRemove={this.handleOnRemoveProcesso}
           />
         </Grid> 
       )
@@ -32,7 +39,7 @@ class ListaMain extends Component {
 
     return null;
   }
-
+  
   render() {
     const { classes, processos, chooseProcesso, processo, isFetching } = this.props;
     
@@ -45,11 +52,7 @@ class ListaMain extends Component {
     }
     
     return (
-      <Grid
-        container
-        className={classes.root}
-      >
-        <Grid container spacing={24}>
+        <Grid container spacing={40} alignItems="stretch">
           <Grid item xs={12} sm={processo ? 6 : 12} md={processo ? 5 : 12}>
             {processos && processos.length
               ? processos.map((item) => (
@@ -75,7 +78,6 @@ class ListaMain extends Component {
                 {this.renderCardItem(processo)}
               </Hidden>
         </Grid>
-      </Grid>
     )
   }
 }

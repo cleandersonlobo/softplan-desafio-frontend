@@ -42,7 +42,7 @@ class ListaItemCard extends Component {
     const { processo, classes, processoSelected } = this.props;
 
     return (
-      <Grid container alignItems="center" justify="center" spacing={40}>
+    <React.Fragment>
       <div
         className={classes.button} 
         onClick={this.handleOnClickItem}
@@ -71,6 +71,7 @@ class ListaItemCard extends Component {
                 <div className={classNames(classes.title, this.state.activeText)}>Interessado</div>
                 <Typography className={classNames(classes.body, this.state.activeText)} noWrap>{processo.interessados[0]}</Typography>
               </Grid>
+
               {!processoSelected && 
               <Hidden only={["xs", "sm"]}>
                 <Grid item sm={3}>
@@ -80,12 +81,12 @@ class ListaItemCard extends Component {
               </Hidden>
               }
               </Grid>
-              </Paper>
+            </Paper>
           
           
       </div>
       {this.props.children}
-    </Grid>
+    </React.Fragment>
     )
   }
 }

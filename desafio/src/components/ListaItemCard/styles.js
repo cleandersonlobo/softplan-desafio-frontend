@@ -1,8 +1,9 @@
 const styles = theme => ({ 
-  cardItem: { 
+  cardItem: {
+    flexGrow: 1,
     padding: theme.spacing.unit,
     marginTop: 20,
-    marginBottom: 40,
+    marginBottom: 20,
   },
   title: {
     ...theme.typography.title,
@@ -13,11 +14,10 @@ const styles = theme => ({
     color: theme.palette.secondary.dark
   },
   button: {
-    marginTop: '16px',
-    cursor: 'pointer',
-    padding: 0, 
-    border: 0,
+    cursor: 'pointer', 
     outline: 0,
+    marginRight: 40,
+    marginLeft: 40,
   },
   image: {
     width: 80,
