@@ -15,31 +15,31 @@ const styles = theme => ({
 });
 
 class SearchInput extends Component {
+
   static defaultProps = {
-    onChangeValue: () => {},
-    placeholder: '',
+    placeholder: 'Pesquise por uma informação do processo',
     value: '',
   }
   static propTypes = {
+    onSubmitSearch: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
-    onChangeValue: PropTypes.func,
   }
   state = {
     value: this.props.value,
   }
   handleOnChange = (e) => {
     this.setState({ value: e.target.value})
-    this.props.onChangeValue(e.target.value)
   }
 
   handleOnSubmit = (e) => {
     e.preventDefault();
-    if (!this.state.value.length) return;
-    alert('asa')
+    const { value } = this.state;
+    if (!value.length) return;
+    this.props.onSubmitSearch(value)
   }
 
   render() {
-    const { classes, value, ...restProps} = this.props;
+    const { classes, value, onSubmitSearch, ...restProps} = this.props;
     return (
       <form onSubmit={this.handleOnSubmit}>
         <TextField

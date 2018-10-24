@@ -3,29 +3,12 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core'
 import { SearchInput } from '../../components';
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 100,
-    padding: 20,
-  },
-  margin: {
-    margin: theme.spacing.unit,
-  }, 
-  subtitle: {
-    marginTop: 50,
-    color: theme.palette.secondary.main,
-    textAlign: 'center'
-  },
-  link: {
-    color: theme.palette.primary.main,
-    fontWeight: 'bold',
-  }
-});
+import styles from './styles';
 
 class BuscarProcessos extends Component {
   
+  handleNavigateToBuscar = query => this.props.history.push(`/buscar/${query}`);
+
   render() {
     const { classes } = this.props;
     return (
@@ -35,9 +18,10 @@ class BuscarProcessos extends Component {
         justify="center"
       >
         <Grid item xs={12} sm={9} md={5} >
-          <p style={{ fontSize: 24, color: '#005b95', textAlign: 'center'}}> Busca de processos </p>
+          <p className={classes.title}> Busca de processos </p>
           <SearchInput 
             placeholder="Pesquise por uma informação do processo"
+            onSubmitSearch={this.handleNavigateToBuscar}
           />
           <p 
             className={classNames(classes.subtitle)} 
